@@ -28,13 +28,14 @@ const Post = ({
   style,
 }: PostProps) => {
   return (
-    <div className="min-w-[300px] mx-auto">
+    <div className={`mx-auto min-w-[300px]`}>
       <div
         className={`flex flex-col gap-6 md:flex-${
           style === "row" ? "row" : "col"
         }`}
       >
-        <div
+        <Link
+          href={`/post/${id}`}
           className={`w-full min-h-[228px] flex relative md:${
             style === "column" ? "max-w-[377px]" : "max-w-80"
           }`}
@@ -45,7 +46,7 @@ const Post = ({
             className="object-cover"
             alt={`image ${title}`}
           />
-        </div>
+        </Link>
         <div className="flex flex-col gap-6 lg:w-full">
           <div className="flex flex-col gap-6">
             <p className="text-violet-700 text-sm font-semibold leading-tight">

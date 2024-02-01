@@ -101,7 +101,7 @@ export const ContactForm = () => {
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="flex flex-col gap-2 md:flex-1"
+        className="flex flex-col gap-6 md:flex-1"
       >
         <h1 className="font-bold text-2xl">{`Form`}</h1>
         <label htmlFor="name">Your Name</label>
@@ -123,7 +123,7 @@ export const ContactForm = () => {
           name="message"
           placeholder="message"
           cols={30}
-          rows={10}
+          rows={7}
           className="bg-transparent border-b-2 outline-white focus:outline"
         ></textarea>
         <button type="submit" className="py-2 px-6 bg-black text-white mt-4">
