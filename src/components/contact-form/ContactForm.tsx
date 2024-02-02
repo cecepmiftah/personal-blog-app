@@ -4,7 +4,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
 import { CgMail } from "react-icons/cg";
-import { FormEvent, useContext, useRef } from "react";
+import { FormEvent, useContext, useRef, useState } from "react";
 import { ThemeContext } from "@/context/ThemeContext";
 import emailjs from "@emailjs/browser";
 import { Bounce, toast, ToastContainer } from "react-toastify";
@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const themeContext = useContext(ThemeContext);
 
@@ -23,6 +24,8 @@ export const ContactForm = () => {
     e.preventDefault();
 
     if (form.current === null) return;
+
+    setIsSubmitting(true);
 
     emailjs
       .sendForm(
@@ -36,10 +39,12 @@ export const ContactForm = () => {
           if (result.status === 200 || result.text === "OK") {
             toast.success("Success Send Message 🚀");
             form.current?.reset();
+            setIsSubmitting(false);
           }
         },
         (error) => {
           toast.error(`${error.text}😭`);
+          setIsSubmitting(false);
         }
       );
   };
@@ -126,7 +131,11 @@ export const ContactForm = () => {
           rows={7}
           className="bg-transparent border-b-2 outline-white focus:outline"
         ></textarea>
-        <button type="submit" className="py-2 px-6 bg-black text-white mt-4">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="py-2 px-6 bg-black disabled:cursor-not-allowed disabled:bg-gray-700 text-white mt-4"
+        >
           Submit
         </button>
       </form>

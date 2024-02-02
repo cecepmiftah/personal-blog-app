@@ -55,7 +55,7 @@ export const PostDetail = ({
         <div className="flex flex-col gap-4 text-justify text-base font-normal leading-normal">
           <div dangerouslySetInnerHTML={{ __html: desc }} />
         </div>
-        <div className="flex justify-start">
+        <div className="flex justify-start gap-2">
           {slug.map((item) => {
             const color = generateRandomColor();
 
