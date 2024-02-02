@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Slug } from "./slug/Slug";
+import { ArrowUpRight } from "./arrow-up-right/Arrow";
 
 type PostProps = {
   id: number;
@@ -56,12 +57,7 @@ const Post = ({
               <Link href={`/post/${id}`}>
                 <h2 className="text-xl md:text-2xl font-semibold">{title}</h2>
               </Link>
-              <Image
-                src="/assets/arrow-up-right.svg"
-                alt="arrow-up-right"
-                width={24}
-                height={24}
-              />
+              <ArrowUpRight />
             </div>
             <p className="text-gray-500 text-base font-normal leading-normal">
               {summary}
